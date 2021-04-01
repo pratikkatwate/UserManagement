@@ -1,0 +1,83 @@
+{
+    "userName" : "asawari.katwate",
+	"password" : "#asawari123",
+	"name" : "Asawari",
+	"surname" : "Katwate",
+	"emailId" : "asawari.katwate@gmail.com",
+	"contactNumber" : "8600865136",
+	"dob" : "10/06/1994",
+	"doj" : "02/02/2020",
+	"bloodGroup" : "O+",
+
+	"address" :  {
+			"addressLine1" : "Near Grampanchayat" ,
+			"addressLine2" : "Gandhi Chowk" ,
+			"city" : "Sangli" ,
+			"pincode" : "412833" ,
+			"state" : "Maharashtra" ,
+			"country" : "India"
+		     }
+}
+
+{
+    "userName" : "pratik.katwate",
+	"password" : "#pratik123",
+	"name" : "Pratik",
+	"surname" : "Katwate",
+	"emailId" : "pratik.katwate@gmail.com",
+	"contactNumber" : "9096848182",
+	"dob" : "11/09/1993",
+	"doj" : "22/03/2021",
+	"bloodGroup" : "A+",
+	"status" : false,
+	"address" :  {
+			"addressLine1" : "133/B Vrindavan Colony" ,
+			"addressLine2" : "Navechi Wadi" ,
+			"city" : "Wai" ,
+			"pincode" : "412803" ,
+			"state" : "Maharashtra" ,
+			"country" : "India"
+		     }
+}
+
+{
+    "userName" : "sagar.katwate",
+	"password" : "#sagar123",
+	"name" : "sagar",
+	"surname" : "Katwate",
+	"emailId" : "sagar.katwate@gmail.com",
+	"contactNumber" : "9975750033",
+	"dob" : "22/12/1992",
+	"doj" : "10/01/2017",
+	"bloodGroup" : "A+",
+	"status" : false,
+	"address" :  {
+			"addressLine1" : "Renuka Nagar" ,
+			"addressLine2" : "Ogale Wadi" ,
+			"city" : "Karad" ,
+			"pincode" : "412809" ,
+			"state" : "Maharashtra" ,
+			"country" : "India"
+		     }
+}
+
+{
+    "userName" : "varsha.katwate",
+	"password" : "#varsha123",
+	"name" : "varsha",
+	"surname" : "Katwate",
+	"emailId" : "varsha.katwate@gmail.com",
+	"contactNumber" : "9860549805",
+	"dob" : "20/09/1972",
+	"doj" : "11/09/1993",
+	"bloodGroup" : "A+",
+	"status" : false,
+	"address" :  {
+			"addressLine1" : "133/B Vrindavan Colony" ,
+			"addressLine2" : "Navechi Wadi" ,
+			"city" : "Wai" ,
+			"pincode" : "412803" ,
+			"state" : "Maharashtra" ,
+			"country" : "India"
+		     }
+}

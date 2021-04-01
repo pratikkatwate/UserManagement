@@ -1,0 +1,13 @@
+
+http://localhost:8081/usercontroller/registerUser
+http://localhost:8081/usercontroller/getUser/3
+http://localhost:8081/usercontroller/editUser/2
+http://localhost:8081/usercontroller/softDeleteUser/4
+http://localhost:8081/usercontroller/findUser
+{
+    "name" : "Pratik",
+    "surname" : "Katwate",
+    "pincode" : "412803"
+}
+http://localhost:8081/usercontroller/hardDeleteUser/{id}
+http://localhost:8081/usercontroller/sortUsers
