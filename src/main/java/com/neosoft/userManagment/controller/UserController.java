@@ -3,6 +3,7 @@ package com.neosoft.userManagment.controller;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import javax.validation.ValidationException;
 
@@ -59,10 +60,11 @@ public class UserController {
 			if(user==null) {
 				throw new NullPointerException(); 
 			}
-			return new ResponseEntity<>(user,HttpStatus.OK);
-			
-		} catch (NullPointerException e) {
-			return new ResponseEntity<>("User Not Found",HttpStatus.NOT_FOUND);
+			else {
+				return new ResponseEntity<>(user,HttpStatus.OK);
+			}
+		} catch (NullPointerException | NoSuchElementException e) {
+			return new ResponseEntity<>("User Does Not Exists",HttpStatus.NOT_FOUND);
 		}
 
 	}
@@ -98,34 +100,48 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/hardDeleteUser/{id}")
-	public HttpStatus hardDeleteUser(@PathVariable int id ) {
-		userService.hardDeleteUser(id);	
-		return HttpStatus.OK;
+	public ResponseEntity<Object> hardDeleteUser(@PathVariable int id ) {
+		try {
+			userService.hardDeleteUser(id);	
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return  new ResponseEntity<>("User Does Not Exists",HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PutMapping("/softDeleteUser/{id}")
-	public HttpStatus softDeleteUser(@PathVariable int id ) {
-		userService.softDeleteUser(id);	
-		return HttpStatus.OK;
+	public ResponseEntity<Object> softDeleteUser(@PathVariable int id ) {
+		try {
+			userService.softDeleteUser(id);	
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return  new ResponseEntity<>("User Does Not Exists",HttpStatus.NOT_FOUND);
+		}
+		
 	}
 	
 	@GetMapping("/sortUsers")
-	public List<User> sortUsers(){
-		return userService.sortUsers();
+	public ResponseEntity<Object> sortUsers(){
+		try {
+			List<User> ulist = userService.sortUsers();	
+			return new ResponseEntity<>(ulist, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return  new ResponseEntity<>("User Does Not Exists",HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PostMapping("/findUser")
-	public ResponseEntity<User> findUserByNameSurnamePincode(@RequestBody Map<String,String> searchParam){
+	public ResponseEntity<Object> findUserByNameSurnamePincode(@RequestBody Map<String,String> searchParam){
 		//System.out.println(searchParam.get("name")+" "+searchParam.get("surname")+" "+searchParam.get("pincode"));
 		try {
 			User u = userService.findUserByNameSurnamePincode(searchParam);
 			if(u==null) {
 				throw new NullPointerException(); 
 			}
-			return new ResponseEntity<User>(u,HttpStatus.OK);
+			return new ResponseEntity<>(u,HttpStatus.OK);
 			
 		} catch (NullPointerException e) {
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>("User Does Not Exists",HttpStatus.NOT_FOUND);
 		}
 
 	}

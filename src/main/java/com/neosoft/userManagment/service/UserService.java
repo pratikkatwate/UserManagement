@@ -3,6 +3,7 @@ package com.neosoft.userManagment.service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,9 @@ import org.springframework.stereotype.Service;
 import com.neosoft.userManagment.dao.UserRepository;
 import com.neosoft.userManagment.model.User;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @Service
 public class UserService implements UserServiceInterface {
 
@@ -26,7 +30,7 @@ public class UserService implements UserServiceInterface {
 	}
 	
 	@Override
-	public User getUser(int uid) {
+	public User getUser(int uid) throws NoSuchElementException{
 		User u = re.findById(uid).get();
 		if(u.isStatus()==true) {
 			return null;
@@ -43,9 +47,12 @@ public class UserService implements UserServiceInterface {
 	public User editUser(User u){
 		System.out.println("Before Updating \n"+u);
 		try {
-			User user = re.save(u);
-			if(user.getUserId() == u.getUserId()) {
-				return user;
+			User user = re.getOne(u.getUserId());
+			user = u;
+			User savedUser = re.save(user);
+					//re.save(u);
+			if(user.equals(savedUser)) {
+				return savedUser;
 			}else {
 				throw new NullPointerException();
 			}
@@ -99,5 +106,9 @@ public class UserService implements UserServiceInterface {
 	@Override
 	public List<User> getAllUsers() {
 		return re.findAll();
+	}
+
+	public UserService() {
+		// TODO Auto-generated constructor stub
 	}
 }

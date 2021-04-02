@@ -1,8 +1,6 @@
 package com.neosoft.userManagment.model;
 
 import java.sql.Date;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,21 +15,18 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.aspectj.weaver.bcel.BcelAccessForInlineMunger;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
 @Setter
 @Getter
 @AllArgsConstructor
@@ -83,4 +78,88 @@ public class User {
 	@JoinColumn(name ="addressId")
 	Address address;
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (bloodGroup == null) {
+			if (other.bloodGroup != null)
+				return false;
+		} else if (!bloodGroup.equals(other.bloodGroup))
+			return false;
+		if (contactNumber == null) {
+			if (other.contactNumber != null)
+				return false;
+		} else if (!contactNumber.equals(other.contactNumber))
+			return false;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.equals(other.dob))
+			return false;
+		if (doj == null) {
+			if (other.doj != null)
+				return false;
+		} else if (!doj.equals(other.doj))
+			return false;
+		if (emailId == null) {
+			if (other.emailId != null)
+				return false;
+		} else if (!emailId.equals(other.emailId))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (status != other.status)
+			return false;
+		if (surname == null) {
+			if (other.surname != null)
+				return false;
+		} else if (!surname.equals(other.surname))
+			return false;
+		if (userId != other.userId)
+			return false;
+		if (userName == null) {
+			if (other.userName != null)
+				return false;
+		} else if (!userName.equals(other.userName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((bloodGroup == null) ? 0 : bloodGroup.hashCode());
+		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
+		result = prime * result + ((doj == null) ? 0 : doj.hashCode());
+		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+		result = prime * result + userId;
+		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		return result;
+	}
 }
